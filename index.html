@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Bike Racks in Cambridge</title>
+	<title>Bike Racks in Cambridge, Massachusetts</title>
 	
  		<!-- the Leaflet CSS -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
@@ -13,7 +13,7 @@
 	<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="styles.css">
-
+	
 </head>
 
 <body>
@@ -31,7 +31,8 @@
 	<div id="mymap" style="height: 95%"></div>
 	<script type="text/javascript" src="bikeracks.js"></script>
 	<script type="text/javascript" src="Leaflet.NavBar.js"></script>
-	
+    <script type="text/javascript" src="leaflet.legend.js"></script>
+
 	<script>
 		var mymap = L.map('mymap').setView([42.373611, -71.110558], 12);
 		var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png', {
@@ -55,7 +56,20 @@
 		var clusters = L.markerClusterGroup({showCoverageOnHover: false,});
 			clusters.addLayer(bikeracks);
 		mymap.addLayer(clusters);
+		
 		L.control.navbar().addTo(mymap);
+
+		var Legend = L.control.Legend({
+		  	position: "bottomright",
+			title: "Legend",
+		    	legends: [
+				{
+				label: "Bike Racks",
+				type: "image",
+				url: "bikeparking.png",
+				}
+			]
+		}).addTo(mymap);
 
   	</script>
 	
