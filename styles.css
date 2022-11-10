@@ -1,0 +1,58 @@
+body {
+	padding: 10;
+	margin: 10;
+}
+
+h1 {
+	font-family: "Times New Roman";
+	color: black;
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+}
+
+p3 {
+	font-family: "Times New Roman";
+	color: grey;
+	font-size: 1em;
+	font-style: italic;
+	text-align: center;
+}
+
+a {
+	font-family: "Times New Roman";
+	color: grey;
+	font-size: 1em;
+	font-style: italic;
+	text-align: center;
+}
+
+.leaflet-control-navbar-fwd {
+	background-image: url("right.jpg");
+}
+
+.leaflet-control-navbar-back {
+	background-image: url("left.jpg");
+}
+
+.leaflet-control-navbar-home {
+	background-image: url("home.jpg");
+}
+
+
+.leaflet-control-navbar-fwd-disabled {
+	background-image: url("rightg.jpg");
+}
+
+.leaflet-control-navbar-back-disabled {
+	background-image: url("leftg.jpg");
+}
+
+.leaflet-control-navbar-home-disabled {
+	background-image: url("homeg.jpg");
+}
+
+.brbig {
+	display: block;
+	margin-bottom:1em;
+}

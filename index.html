@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Bike Racks in Cambridge, Massachusetts</title>
+	
+ 		<!-- the Leaflet CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+		<!-- the Leaflet JavaScript library -->
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+		<!-- Leaflet.markercluster CSS links -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+		<!-- Leaflet.markercluster JS link -->
+	<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+
+	<div style="display: inline-block; vertical-align: middle;">
+		<img src="bikeparking.png" width="50%" alt="Bike Parking Logo">
+	</div>
+	
+	<div style="display: inline-block;">
+		<h1>Bike Racks in Cambridge, Massachusetts</h1>
+	</div>
+	
+	<p class="brbig"> </p>
+
+	<div id="mymap" style="height: 95%"></div>
+	<script type="text/javascript" src="bikeracks.js"></script>
+	<script type="text/javascript" src="Leaflet.NavBar.js"></script>
+	
+	<script>
+		var mymap = L.map('mymap').setView([42.373611, -71.110558], 12);
+		var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			}).addTo(mymap);
+			
+		var bikeracks = L.geoJson(data, {
+			pointToLayer: function(feature, latlng){
+				
+		var logo = L.icon({
+			iconUrl: 'bikeparking.png',  		<!-- https://move.unc.edu/bike/ -->
+			iconSize: [40,40]
+			});
+				
+       		var marker = L.marker(latlng,{icon:logo});
+            		marker.bindPopup("Capacity: " + feature.properties.Capacity + "<br>Status: " + feature.properties.Status);
+            		return marker;
+			}
+			});
+			
+		var clusters = L.markerClusterGroup({showCoverageOnHover: false,});
+			clusters.addLayer(bikeracks);
+		mymap.addLayer(clusters);
+		L.control.navbar().addTo(mymap);
+
+  	</script>
+	
+		<p class="brbig"> </p>
+	
+		<center>
+			<p3>Data collected from
+			<a href="https://www.cambridgema.gov/GIS/gisdatadictionary/Recreation/RECREATION_BikeRacks">https://www.cambridgema.gov/GIS/gisdatadictionary/Recreation/RECREATION_BikeRacks</a>
+			</p3> 
+		<br>
+			<p3>Marker logo from
+			<a href="https://move.unc.edu/bike/">https://move.unc.edu/bike/</a>
+			</p3>
+		</center>
+</body>
+</html>
