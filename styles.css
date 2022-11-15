@@ -27,6 +27,8 @@ a {
 	text-align: center;
 }
 
+/* Leaflet.NavBar.css */
+
 .leaflet-control-navbar-fwd {
 	background-image: url("right.jpg");
 }
@@ -52,10 +54,14 @@ a {
 	background-image: url("homeg.jpg");
 }
 
+/* end of Leaflet.NavBar.css */
+
 .brbig {
 	display: block;
 	margin-bottom:1em;
 }
+
+/* Leaflet.Legent.css */
 
 .leaflet-legend {
 	background-color: white;
@@ -141,3 +147,5 @@ a {
   	display: block;
   	clear: both;
 }
+
+/* end of Leaflet.legend.css */
